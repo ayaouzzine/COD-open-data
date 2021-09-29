@@ -1,0 +1,240 @@
+#myInputautocomplete-list,#myInput2autocomplete-list{
+  margin-left: 100px;
+  line-height: 130%;
+  font-size: 1.25em;
+}
+.myInputautocomplete-item:hover,.myInput2autocomplete-item:hover{
+  background-color: #8b8bb1;  
+}
+.myInputautocomplete-item,.myInput2autocomplete-item{
+ width:100px;
+}
+
+
+.svgapmap{
+    background-color: #ebebff;
+}
+
+.apmap{
+  position: relative;
+  width: min-content;
+}
+  .country {
+    fill: rgb(194, 47, 162);
+    stroke: black;
+    stroke-width: 0.05px;
+  }
+  
+  .slidapmap{
+
+display:inline-block;
+  }
+  .selectapmap
+  {
+display:inline-block;
+  }
+  .country:hover {
+    stroke-width: 1px;
+  }
+
+  .key{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(245, 245, 220, 0.582);
+    border-radius: 6px;
+    position: absolute;
+    left: 5px;
+    bottom: 10px;
+    width:400px;
+    padding-top: 10px;
+  }
+
+
+  .gradient-key{
+    height: 15px;
+    width: 200px;
+    background: linear-gradient(to right, rgb(246, 225, 158) 0%, rgb(217, 49, 39) 100%);
+    display:inline-block;
+  }
+
+  
+  .min-value{
+    display:inline-block;
+  }
+  .max-value{
+    display:inline-block;
+  }
+
+  .zoom{
+    position: absolute;
+    left: 5px;
+    top: 10px;
+  }
+
+
+  .sphere {
+  fill: #ececec;
+}
+
+.countryenergie {
+  stroke: black;
+  stroke-width: 0.05px;
+}
+
+.country.highlighted {
+  stroke-width: 0.5px;
+}
+
+.countryenergie:hover {
+  stroke-width: 1px;
+}
+.tick {
+  cursor: pointer;
+}
+.tick text {
+  font-size: 1em;
+  fill: black;
+  font-family: sans-serif;
+}
+
+.tick circle {
+  stroke: black;
+  stroke-opacity: 0.5;
+}
+
+body {
+            height: 100%;
+            font-family: Montserrat;
+            font-size: 12.5px;
+
+        }
+
+        /*SLIDE*/
+        .carousel-item {
+            height: 650px;
+            opacity: 100%;
+        }
+
+
+        /*Menu*/
+        nav {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .navbar {
+            opacity: 0.75;
+            border-bottom: 1.2px solid steelblue;
+        }
+
+        .navbar-toggler {
+            cursor: pointer;
+            top: 3rem;
+            right: 3rem;
+            color: white;
+            font-size: 3rem;
+            display: none;
+        }
+
+        nav ul li a {
+            letter-spacing: 3.5px;
+            position: relative;
+            margin: 0 3.5rem;
+            padding: 1rem 0;
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav ul li a::before {
+            background-color: steelblue;
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 2px;
+            left: 0;
+            top: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        nav ul li a::after {
+            background-color: steelblue;
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        @media screen and (max-width: 700px) {
+
+            nav ul li a {
+                margin: 0;
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .nav-item-empty {
+                display: none;
+            }
+        }
+
+        /*TEXT*/
+        .mylead {
+            background-color: rgb(176, 224, 230);
+        }
+
+        .titreB {
+            background-color: #fff;
+        }
+
+        .textbg {
+            background-color: rgba(41, 128, 185, 0.6);
+        }
+
+        .textbg1 {
+            background-color: rgba(41, 128, 185, 0.7);
+        }
+
+        * {
+            box-sizing: inherit
+        }
+
+        /*service*/
+        .single-service-area {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .single-service-area .service-icon {
+            background-color: #e7f2fd;
+            width: 145px;
+            height: 110px;
+            font-size: 42px;
+            color: #303030;
+            text-align: center;
+            line-height: 110px;
+            border-radius: 80px 80px 80px 80px;
+            margin: 0 auto 30px;
+        }
+
+        .single-service-area:focus .service-icon,
+        .single-service-area:hover .service-icon {
+            background-color: #408080;
+            color: #ffffff;
+
+        }
+
+        .single-service-area:focus h5,
+        .single-service-area:hover h5 {
+            color: black;
+        }

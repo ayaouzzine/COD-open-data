@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+		integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>-->
+	<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<title>RAPPORT POLLU-AWARE</title>
+</head>
+
+<body style="background-color:rgb(204, 204, 204);">
+	<style>
+		body {
+			height: 100%;
+			font-family: Montserrat;
+			font-size: 12.5px;
+
+		}
+
+		/*Menu*/
+		nav {
+			display: flex;
+			align-items: center;
+			font-size: 0.85rem;
+		}
+
+		.navbar {
+			opacity: 0.75;
+			border-bottom: 1.2px solid steelblue;
+		}
+
+		.navbar-toggler {
+			cursor: pointer;
+			top: 3rem;
+			right: 3rem;
+			color: white;
+			font-size: 3rem;
+			display: none;
+		}
+
+		nav ul li a {
+			letter-spacing: 3.5px;
+			position: relative;
+			margin: 0 3.5rem;
+			padding: 1rem 0;
+		}
+
+		nav ul li a:hover::before,
+		nav ul li a:hover::after {
+			transform: scaleX(1);
+		}
+
+		nav ul li a::before {
+			background-color: steelblue;
+			content: '';
+			position: absolute;
+			width: 90%;
+			height: 2px;
+			left: 0;
+			top: 0;
+			transform: scaleX(0);
+			transform-origin: left;
+		}
+
+		nav ul li a::after {
+			background-color: steelblue;
+			content: '';
+			position: absolute;
+			width: 90%;
+			height: 2px;
+			left: 0;
+			bottom: 0;
+			transform: scaleX(0);
+			transform-origin: right;
+		}
+
+		@media screen and (max-width: 700px) {
+
+			nav ul li a {
+				margin: 0;
+				font-size: 2rem;
+			}
+		}
+
+		@media (min-width: 768px) and (max-width: 991px) {
+			.nav-item-empty {
+				display: none;
+			}
+		}
+
+		/*TEXT*/
+		.mylead {
+			background-color: rgb(176, 224, 230);
+		}
+
+		.titreB {
+			background-color: #fff;
+		}
+
+		.textbg {
+			background-color: rgba(41, 128, 185, 0.6);
+		}
+
+		.textbg1 {
+			background-color: rgba(41, 128, 185, 0.7);
+		}
+
+		* {
+			box-sizing: inherit
+		}
+	</style>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+		style="border-radius: 0px; margin-bottom:0px;margin-top:0px">
+		<i class="fa fa-leaf" style="color:white;font-size:30px;padding-left:30px;"></i> <a class="navbar-brand"
+			style="font-family:cursive;font-size:30px;height:200%;text-transform:none" href="index.html">POLLU-AWARE</a>
+		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item-empty"><a><img src="" /></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+				<li class="nav-item-empty"><a></a>
+				<li>
+
+				<li class="nav-item ">
+
+					<a class="nav-link" style="font-size:20px" href="index.html">Visualisation <span
+							class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" style="font-size:20px" href="rapport.html">Rapport<span
+							class="sr-only">(current)</span></a>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+	<header
+		style="padding-top: 80px;padding-bottom: 80px;border-bottom: 1px solid rgb(221, 221, 221);background-color: rgb(240, 240, 240);text-align: center;color: rgb(51, 51, 51);font-size: 26px;font-weight: bold;line-height: 135%">
+		<div style="margin-left: auto;margin-right: auto;max-width: 940px;">
+			<a>Projet Challege Open Data</a>
+			<p class="lead textbg"
+				style="background-color:rgba(41, 128, 185,0.6);font-size:30px;font-weight:bold;font-family:garamond;margin-top: 25px; padding: 5px;">
+				Pollution de l’air : Notre air est-il encore respirable ? <br> </p>
+			<p style="display: block;
+			margin-right: auto;
+			margin-bottom: 0px;
+			margin-left: auto;
+			font-family: Merriweather, serif;
+			color: rgb(150, 150, 150);
+			font-size: 16px;">BELGRID Younes - KAHLAOUI Ismail- MAFTAH EL KASSIMY Hajar - OUBAAMRANE Amine - OUZZINE Aya</p>
+		</div>
+	</header>
+	<div style="padding-top: 80px;color: rgb(51, 51, 51);font-size: 16px;line-height: 135%;">
+		<div style="clear:both;margin-left: auto;margin-right: auto;">
+			<div class="container">
+				<div
+					style="opacity: 1;transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);transform-style: preserve-3d;margin-right: 7%;margin-bottom: 40px;margin-left: 7%;padding-bottom: 40px;">
+					<a
+						style="display: block;transition-property: opacity;transition-duration: 200ms;transition-timing-function: ease;color: rgb(51, 51, 51);text-decoration: none;font-weight: 700;">
+						<h1 style="font-size: 40px;line-height: 37px;font-weight: 1000;padding-bottom: 20px;">
+							Présentation
+							du projet</h1>
+					</a>
+					<p style="font-size: 1.25em; text-align:justify;line-height: 30px;">Le projet Challenge Open Data a
+						pour
+						but de développer une application Web
+						de <strong>visualisation interactive</strong> de données.<br> La fin serait alors d'assurer non
+						seulement une exploration
+						visuelle
+						pertinente et ergonomique des jeux de données quelle que soit leur volumétrie, mais aussi
+						l'implication de
+						l'utilisateur afin de faciliter l'exploration. Ainsi, la transmission des
+						informations serait assez fluide en donnant vie aux données et le cerveau parviendrait
+						plus aisément à absorber de grandes
+						quantités d’informations.<br><br>L'un des pilliers importants de ce projet est le choix d'une
+						thématique qui relève du développement durable et de la responsabilité sociale. Ce projet
+						sous-entend une sensibilisation afin de tenir compte des impacts sociaux et environnementaux de
+						nos
+						activités quotidiennes. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div
+		style="padding-top: 80px; padding-bottom:10px;color: rgb(51, 51, 51);font-size: 16px;line-height: 135%;background-color: lightblue;">
+		<div style="clear:both;margin-left: auto;margin-right: auto;">
+			<div class="container">
+				<div
+					style="opacity: 1;transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);transform-style: preserve-3d;margin-right: 7%;margin-bottom: 40px;margin-left: 7%;padding-bottom: 40px;">
+					<a
+						style="display: block;transition-property: opacity;transition-duration: 200ms;transition-timing-function: ease;color: rgb(51, 51, 51);text-decoration: none;font-weight: 700;">
+						<h1 style="font-size: 40px;line-height: 37px;font-weight: 1000;padding-bottom: 20px;">Choix de
+							l'idée</h1>
+					</a>
+					<p style="font-size: 1.25em; text-align:justify;line-height: 30px;">La pollution de l'air est un
+						danger
+						potentiel pour la
+						santé publique auquel on ne peut échapper. Aujourd'hui, il est bien connu que l'exposition à un
+						air
+						pollué augmente les risques de maladies cardiovasculaires à long terme et de pathologies
+						respiratoires à court terme. Son
+						caractère insidieux réside dans le fait qu'elle passe inaperçue au-delà des défenses du corps
+						humain
+						qui inspire treize mille litres d'air par jour
+						et attaque les poumons, le coeur et le cerveau. Ses armes meurtrières sont les particules
+						respirables toxiques que le système immunitaire essaie désespérément de
+						défendre.<br><br>
+						Les polluants de l'air se présentent sous forme de gaz et de particules respirables en
+						suspension dans
+						l'air. Plus ces dernières sont petites, plus elles peuvent être toxiques parce qu'elles
+						pénètrent profondément dans le système respiratoire et peuvent même atteindre le
+						système cardiovasculaire. Leur nomination commune est PM, l'abréviation du terme anglais
+						Particulate Matter dont on va aborder par la suite les deux types : PM10 (diamètre
+						inférieur à 10 micromètres) et
+						PM2,5 (diamètre inférieur à 2,5 micromètres). On note que le cheveu humain a un diamètre qui
+						varie entre 50 et 150 micromètres.
+						<br><br><strong>Luttons
+							contre
+							cet invisible tueur!</strong>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="padding-top: 80px;padding-bottom:10px;color: rgb(51, 51, 51);font-size: 16px;line-height: 135%;">
+		<div style="clear:both;margin-left: auto;margin-right: auto;">
+			<div class="container">
+				<div
+					style="opacity: 1;transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);transform-style: preserve-3d;margin-right: 7%;margin-bottom: 40px;margin-left: 7%;padding-bottom: 40px;">
+					<a
+						style="display: block;transition-property: opacity;transition-duration: 200ms;transition-timing-function: ease;color: rgb(51, 51, 51);text-decoration: none;font-weight: 700;">
+						<h1 style="font-size: 40px;line-height: 37px;font-weight: 1000;padding-bottom: 20px;">
+							Description
+							des jeux de données</h1>
+					</a>
+					<p style="font-size: 1.25em; text-align:justify;line-height: 30px;">Les principaux jeux de données
+						choisis sont les
+						suivants :<br><br><strong>&nbsp;<span>&#8226;</span>&nbsp;Mesures de concentration des
+							sept principaux polluants dans différentes locations
+							dans le monde</strong> : PM2.5, PM10, l’ozone O3, le dioxyde de soufre SO2, le dioxyde
+						d’azote NO2, le monoxyde de carbon CO et le carbone noir BC.<br> Les données ont été extraites
+						de l'<a href="https://docs.openaq.org/ " target="_blank">API d’Openaq</a> qui fournit des donnés
+						en
+						temps réel et des historiques également. Ces données sont issues de leurs emplacements de
+						surveillance
+						qui forment un réseau de capteurs gérés par la même
+						source.<br>Tout ce que cette API propose est libre au
+						sens des licences ouvertes puisque leur mission est de lutter contre les inégalités de l'air.
+						Pour celà, ils exposent les données sur
+						la qualité de l'air afin de connecter une communauté mondiale diversifiée d'individus et
+						d'organisations. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bas de page -->
+	<footer class="bg-light text-center text-lg-start" id="contact">
+		<div style="padding: 5px 0; background: #333; text-align: left; color: #aaa;width:100%;">
+			<div class="container p-4">
+				<div style="text-align: center;">
+					<h3 style="font-weight:bold">POLLU-AWARE</h3>
+					<p style="font-weight:bold;color:while;">
+						<span style="color:steelblue;font-size:20px;">Soyons responsables et restons vigilants pour un
+							air respirable</span>
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+		integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

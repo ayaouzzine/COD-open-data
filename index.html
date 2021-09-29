@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <title>POLLU-AWARE</title>
+</head>
+
+<body style="background-color:rgb(192,192,192); overflow-x:hidden" onload="makeplotInit();makeplotInit2()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="border-radius: 0px; margin-bottom:0px;margin-top:0px">
+        <i class="fa fa-leaf" style="color:white;font-size:30px;padding-left:30px;"></i> <a class="navbar-brand"
+            style="font-family:cursive;font-size:30px;height:200%;text-transform:none" href="index.html">POLLU-AWARE</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item-empty"><a><img src="" /></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+                <li class="nav-item-empty"><a></a>
+                <li>
+
+                <li class="nav-item ">
+
+                    <a class="nav-link" style="font-size:20px" href="index.html">Visualisation <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" style="font-size:20px" href="rapport.html">Rapport<span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <section id="home"
+        style="background-image: url('https://cdn.pixabay.com/photo/2021/03/25/09/10/fog-6122490_960_720.jpg');background-size: cover;height:102%;opacity:90%;padding-top:50px">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" class="item1 active" data-slide-to="0"></li>
+                <li data-target="#myCarousel" class="item2" data-slide-to="1"></li>
+                <li data-target="#myCarousel" class="item3" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <!-- SLIDE 1 -->
+
+                <div class="carousel-item carousel-image-1 active  ">
+                    <div class="container">
+                        <div class="carousel-caption d-non d-sm-block text-center">
+                            <h2 class="display-4 d-inline mylead"
+                                style="background-color: rgb(119,136,153,0.1); font-family:  Lucida Console; font-size:110px;opacity:100%; ">
+                                Bienvenue à POLLU-AWARE </h2>
+                            <p></p>
+                            <p class="lead textbg"
+                                style="background-color:rgba(41, 128, 185,0.6);font-size:30px;font-weight:bold;font-family:garamond">
+                                Soyons responsables et restons vigilants pour un air respirable <br> </p>
+                            <br><br><br><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Slide 2-->
+                <div class="carousel-item carousel-image-2 ">
+                    <div class="container">
+                        <div class="carousel-caption d-non d-sm-block text-center ">
+                            <div class="row">
+
+                                <div class="col">
+                                    <h2 class="display-4 d-inline mylead"
+                                        style="background-color: rgb(119,136,153,0.1); font-family:  Lucida Console; font-size:70px;">
+                                        Pensons aux futures générations également </h2>
+                                    <p></p>
+                                    <p class="lead textbg"
+                                        style="background-color:rgba(41, 128, 185,0.6);font-size:30px;font-weight:bold;font-family:garamond">
+                                        Notre air est-il respirable ?<br> Le resterait-il ? <br> </p>
+                                    <br><br><br><br><br><br><br>
+                                </div>
+                                <div class="col"><img src="https://zupimages.net/up/21/39/wx2v.png" alt=""
+                                        style="margin-top:120px;border-radius:50px;height:270px;" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide 3-->
+                <div class="carousel-item carousel-image-2 ">
+                    <div class="container">
+                        <div class="carousel-caption d-non d-sm-block text-center ">
+                            <div class="row">
+                                <div class="col"><img src="https://zupimages.net/up/21/39/wvg2.png"
+                                        style="margin-top:120px;border-radius:50px;height:250px;" alt="" />
+                                </div>
+
+                                <div class="col">
+                                    <h2 class="display-4 d-inline mylead"
+                                        style="background-color: rgb(119,136,153,0.1); font-family:  Lucida Console; font-size:60px;">
+                                        Favorisons le développement durable pour un air propre</h2>
+                                    <p></p>
+                                    <p class="lead textbg"
+                                        style="background-color:rgba(41, 128, 185,0.6);font-size:30px;font-weight:bold;font-family:garamond;padding:5px">
+                                        Mettons en œuvre des plans d'action pour lutter contre cette insidieuse
+                                        pollution.
+                                        <br>
+                                    </p>
+                                    <br><br><br><br><br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Suivant & Precedant-->
+            <a href="#myCarousel" role="button" data-slide="prev" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+
+            <a href="#myCarousel" role="button" data-slide="next" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </section>
+    <!-- Infos section  -->
+    <div class="row" id="apropos" style="margin-top: 100px;margin-bottom: 90px;margin-right:0px">
+        <div class="col-12 col-lg-4 srv1" style="margin-left: -10px;">
+            <div class="single-service-area mb-80">
+                <div class="service-icon">
+                    <i class="fas fa-exclamation-triangle" style="margin-top: 25px;"></i>
+                </div>
+                <h5 style="font-weight: bold;font-size:1.5em">Notre santé en danger</h5>
+                <p></p>
+            </div>
+            <center>
+                <p style="font-size: 1.25em;">
+                    Les polluants rejetés dans l'air sont <br>les plus nocifs en les comparant aux<br> polluants du sol
+                    et
+                    de
+                    l'eau.
+                    <br> <br> <br>
+                </p>
+            </center>
+        </div>
+
+        <div class="col-12 col-lg-4 srv2" style="margin-left: -40px;">
+            <div class="single-service-area mb-80">
+                <div class="service-icon">
+                    <i class="fa fa-heartbeat" style="margin-top: 25px;"></i>
+                </div>
+                <h5 style="font-weight: bold;font-size:1.5em">Plus grave que nous le pensions</h5>
+                <p></p>
+            </div>
+            <center>
+                <p style="font-size: 1.25em;">
+                    La pollution de l'air respiré affecte <br>directement la santé et cause des millions <br>de décès
+                    par
+                    an.<br><br></p>
+            </center>
+        </div>
+        <div class="col-12 col-lg-4 srv3" style="margin-left: -40px;">
+            <div class="single-service-area mb-80">
+                <div class="service-icon">
+                    <i class="fa fa-users" aria-hidden="true" style="margin-top: 25px;"></i>
+                </div>
+                <h5 style="font-weight: bold;font-size:1.5em">Agissons Ensemble</h5>
+                <p></p>
+            </div>
+            <center>
+                <p style="font-size: 1.25em;">
+                    La lutte contre la pollution de l'air<br> nécessite notre contribution ensemble<br> pour un
+                    développement durable.<br></p>
+                <br><br>
+            </center>
+        </div>
+    </div>
+    <div class="row" id="apropos"
+        style="background-color: whitesmoke;padding-top: 100px;padding-bottom: 90px;padding-right:0px;margin-right: 0px;">
+        <div class="col-12 col-lg-12 srv3" style="align-self: center;">
+            <div class="single-service-area mb-80">
+                <h2 class="display-4 d-inline mylead"
+                    style="background-color: rgb(192, 209, 226); font-family:  Lucida Console; font-size:30px;padding:15px">
+                    Distribution géographique des polluants de l'air </h2><br><br><br><br>
+                <div class="apmap" style="margin-left: auto;margin-right: auto;">
+                    <div class="key">
+                        <div>
+                            <p style="display:inline-block;font-weight: bold;font-size:1.25em">Mesures de</p>
+                            <select class="selectapmap form-control" style="width:60px"></select>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; margin-top: 10px;margin-bottom: -18px;font-size:1.25em">Année
+                            </p>
+                            <div id="slider" class="slidapmap"></div>
+                        </div>
+                        <div>
+                            <p class="min-value"></p>
+                            <div class="gradient-key"></div>
+                            <p class="max-value"></p>
+                        </div>
+                    </div>
+                    <div class="zoom">
+                        <button class="btn btn-dark" id="zoom_in" style="width: 20px;"><a
+                                style="font-size: 20px;font-weight:1000">+</a></button>
+                        <button class="btn btn-dark" id="zoom_out" style="width: 20px;"><a
+                                style="font-size: 20px;font-weight:1000">-</a></button>
+                    </div>
+                    <svg class="svgapmap" width="960" height="500"></svg>
+                    <script src="bundle.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="apropos" style="padding-top: 100px;padding-bottom: 90px;padding-right:0px;margin-right: 0px;">
+        <div class="col-12 col-lg-12 srv3" style="align-self: center;">
+            <div class="single-service-area mb-80">
+                <h2 class="display-4 d-inline mylead"
+                    style="background-color: rgb(192, 209, 226); font-family:  Lucida Console; font-size:30px;padding:15px">
+                    Effet de la pollution de l'air sur le taux de mortalité </h2><br><br><br><br>
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row mt-4">
+                                <p style="font-style: italic; font-weight: 500;font-size:1.4em;">
+                                    Personnalisez la
+                                    visualisation en
+                                    tapant le nom d'un pays !</p>
+                            </div>
+                            <!-- Search box -->
+                            <div class="autocomplete mt-4">
+                                <form autocomplete="off" class="row">
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="myInput" type="text" name="country"
+                                            placeholder="Pays" style="height:30px;margin-left:50px">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-dark" onclick="getInputAndPlot();"
+                                            style="height:30px;margin-left:60px"
+                                            onmouseout="this.style.backgroundColor=''"
+                                            onmouseover="this.style.backgroundColor='steelblue'">Rechercher</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div id="deathRates">
+                                <!-- Plotly chart will be drawn inside this DIV -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="apropos"
+        style="background-color: whitesmoke;padding-top: 100px;padding-bottom: 90px;padding-right:0px;margin-right: 0px;">
+        <div class="col-12 col-lg-12 srv3" style="align-self: center;">
+            <div class="single-service-area mb-80">
+                <h2 class="display-4 d-inline mylead"
+                    style="background-color: rgb(192, 209, 226); font-family:  Lucida Console; font-size:30px;padding:15px">
+                    Part de production des énergies renouvelables de chaque pays </h2><br><br><br><br>
+                <svg id="energie" width="960" height="500"></svg>
+                <script src="prop.js"></script>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="apropos" style="padding-top: 100px;padding-bottom: 90px;padding-right:0px;margin-right: 0px;">
+        <div class="col-12 col-lg-12 srv3" style="align-self: center;">
+            <div class="single-service-area mb-80">
+                <h2 class="display-4 d-inline mylead"
+                    style="background-color: rgb(192, 209, 226); font-family:  Lucida Console; font-size:30px;padding:15px">
+                    Taux de pollution par secteur dans différents pays </h2><br><br><br><br>
+                <div class="container mt-3">
+                    <div class="row">
+
+                        <div class="col">
+                            <div id="emissions_by_sector">
+                                <!-- Plotly chart will be drawn inside this DIV -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row mt-4">
+                                <p style="font-style: italic; font-weight: 500;font-size:1.4em;">
+                                    Personnalisez la
+                                    visualisation en
+                                    tapant le nom d'un pays !</p>
+                            </div>
+                            <!-- Search box -->
+                            <div class="autocomplete mt-4">
+                                <form autocomplete="off" class="row">
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="myInput2" type="text" name="country"
+                                            placeholder="Pays" style="height:30px;margin-left:50px">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-dark" onclick="getInputAndPlot();"
+                                            style="height:30px;margin-left:60px"
+                                            onmouseout="this.style.backgroundColor=''"
+                                            onmouseover="this.style.backgroundColor='steelblue'">Rechercher</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bas de page -->
+    <footer class="bg-light text-center text-lg-start" id="contact">
+        <div style="padding: 5px 0; background: #333; text-align: left; color: #aaa;width:100%;">
+            <div class="container p-4">
+                <div style="text-align: center;">
+                    <h3 style="font-weight:bold">POLLU-AWARE</h3>
+                    <p style="font-weight:bold;color:while;">
+                        <span style="color:steelblue;font-size:20px;">Soyons responsables et restons vigilants pour un
+                            air respirable</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        b.setAttribute("class", this.id + "autocomplete-item");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*An array containing all the country names in the world:*/
+        //var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+        var countries = ['Afghanistan'];
+        Plotly.d3.csv("https://raw.githubusercontent.com/elkassimyhajar/Open-Data-Chalenge/main/Datasets/countries.csv", function (data) {
+            //console.log(data[0].Afghanistan); 
+            for (var i = 0; i < data.length; i++) {
+                countries.push(data[i].Afghanistan);
+            }
+            console.log(countries);
+        });
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), countries);
+        autocomplete(document.getElementById("myInput2"), countries);
+    </script>
+
+
+    <script>
+        //https://raw.githubusercontent.com/elkassimyhajar/Open-Data-Chalenge/main/Datasets/output_deaths.csv
+
+
+        var country;
+        function makeplotInit() {
+            country = 'France';
+            makeplot(country);
+        }
+        function makeplotInit2() {
+            country = 'France';
+            makeplot2(country);
+        }
+        function getInputAndPlot() {
+            country = document.getElementById('#myInput').value;
+            country2 = document.getElementById('#myInput2').value;
+            makeplot(country);
+            makeplot2(country2);
+        }
+        function makeplot(countryName) {
+            //get input value
+            Plotly.d3.csv("https://raw.githubusercontent.com/elkassimyhajar/Open-Data-Chalenge/main/Datasets/output_deaths.csv", function (data) {
+                data = data.filter(function (row) {
+                    return row['Entity'].toUpperCase() === countryName.toUpperCase();
+                });
+                processData(data, countryName)
+            });
+        };
+        function makeplot2(countryName) {
+            //get input value
+            Plotly.d3.csv("https://raw.githubusercontent.com/amineouba/challenge_opendata/main/emissions_by_sector.csv", function (data) {
+                data = data.filter(function (row) {
+                    return row['Country'] == country;
+                });
+                processData2(data, countryName)
+            });
+        };
+
+        function processData(allRows, countryName) {
+
+            console.log(allRows);
+            var x1 = [], y1 = [], n1, f1, standard_deviation = [];
+            var x2 = [], y2 = [], n2, f2;
+            var x3 = [], y3 = [], n3, f3;
+            var x4 = [], y4 = [], n4, f4;
+            var x5 = [], y5 = [], n5, f5;
+
+            for (var i = 0; i < allRows.length; i++) {
+                row = allRows[i];
+                x1.push(row['Year']);
+                y1.push(row['Deaths - Age: under 5 years']);
+                n1 = 'Moins de 5 ans';
+                f1 = 'rgb(250, 200, 152)';
+
+                x2.push(row['Year']);
+                y2.push(row['Deaths - Age: 5-14 years']);
+                n2 = 'Entre 5 et 14 ans';
+                f2 = 'rgb(111, 143, 175)';
+
+                x3.push(row['Year']);
+                y3.push(row['Deaths - Age: 15-49 years']);
+                n3 = 'Entre 15 et 49 ans';
+                f3 = 'rgb(135, 206, 235)';
+
+                x4.push(row['Year']);
+                y4.push(row['Deaths - Age: 50-69 years']);
+                n4 = 'Entre 50 et 69 ans';
+                f4 = 'rgb(204, 85, 0)';
+
+                x5.push(row['Year']);
+                y5.push(row['Deaths - Age: 70+ years']);
+                n5 = 'Plus de 70 ans';
+                f5 = 'rgb(8, 24, 168)';
+            }
+            //console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
+
+
+            //var traces = [{x:x1, y:y1, name: n1, fill: 'tonexty', fillcolor: f1, line: {color: f1}}, 
+            //              {x:x2, y:y2, name: n2, fill: 'tonexty', fillcolor: f2, line: {color: f2}},
+            //              {x:x3, y:y3, name: n3, fill: 'tonexty', fillcolor: f3, line: {color: f3}},
+            //              {x:x4, y:y4, name: n4, fill: 'tonexty', fillcolor: f4, line: {color: f4}},
+            //              {x:x5, y:y5, name: n5, fill: 'tonexty', fillcolor: f5, line: {color: f5}}];
+
+            var traces = [{ x: x1, y: y1, name: n1, line: { color: f1 } },
+            { x: x2, y: y2, name: n2, line: { color: f2 } },
+            { x: x3, y: y3, name: n3, line: { color: f3 } },
+            { x: x4, y: y4, name: n4, line: { color: f4 } },
+            { x: x5, y: y5, name: n5, line: { color: f5 } }];
+            Plotly.newPlot('deathRates', traces,
+                {
+                    title: 'Nombre de décès par tranche d\'âge - ' + countryName,
+                    xaxis: {
+                        title: 'Année',
+                        type: 'date',
+                        tickformat: "%Y",
+                        hoverformat: "%y ",
+                        zeroline: false,
+                        showline: false,
+                    },
+                    yaxis: {
+                        title: 'Décès',
+                        zeroline: false,
+                        showline: false,
+                    }
+                });
+        };
+        function processData2(allRows) {
+
+            console.log(allRows);
+            var x1 = [], y1 = [], n1, f1, standard_deviation = [];
+            var x2 = [], y2 = [], n2, f2;
+            var x3 = [], y3 = [], n3, f3;
+            var x4 = [], y4 = [], n4, f4;
+            var x5 = [], y5 = [], n5, f5;
+            var x6 = [], y6 = [], n6, f6;
+            var x7 = [], y7 = [], n7, f7;
+            var x8 = [], y8 = [], n8, f8;
+            var x9 = [], y9 = [], n9, f9;
+            var x10 = [], y10 = [], n10, f10;
+            var x11 = [], y11 = [], n11, f11;
+            var x12 = [], y12 = [], n12, f12;
+
+            for (var i = 0; i < allRows.length; i++) {
+                row = allRows[i];
+                x1.push(row['Year']);
+                y1.push(row['Energy']);
+                n1 = 'Energie';
+                f1 = '#0675D6';
+
+                x2.push(row['Year']);
+                y2.push(row['Industrial Processes']);
+                n2 = 'Processus Industriels';
+                f2 = '#FFC000';
+
+                x3.push(row['Year']);
+                y3.push(row['Agriculture']);
+                n3 = 'Agriculture';
+                f3 = '#0389FF';
+
+                x4.push(row['Year']);
+                y4.push(row['Waste']);
+                n4 = 'Dechets';
+                f4 = '#C79705';
+
+                //x5.push( row['Year'] );
+                //y5.push( row['Land-Use Change and Forestry'] );
+                //n5 = 'Changement d\'affectation des terres et foresterie';
+                //f5 = '#92CCFF';
+
+                x6.push(row['Year']);
+                y6.push(row['Bunker Fuels']);
+                n6 = 'Combustibles de soute';
+                f6 = '#FFDB6B';
+
+                x7.push(row['Year']);
+                y7.push(row['Electricity/Heat']);
+                n7 = 'Electricite/Chaleur';
+                f7 = '#031D33';
+
+                x8.push(row['Year']);
+                y8.push(row['Manufacturing/Construction']);
+                n8 = 'Fabrication';
+                f8 = '#ADD9FF';
+
+                x9.push(row['Year']);
+                y9.push(row['Transportation']);
+                n9 = 'Transport';
+                f9 = '#FFE9A8';
+
+                x10.push(row['Year']);
+                y10.push(row['Building']);
+                n10 = 'Batiment';
+                f10 = '#868171';
+
+                x11.push(row['Year']);
+                y11.push(row['Other Fuel Combustion']);
+                n11 = 'Autres Combustibles';
+                f11 = '#184469';
+
+                x12.push(row['Year']);
+                y12.push(row['Fugitive Emissions']);
+                n12 = 'Emissions fugitives';
+                f12 = '#000000';
+            }
+
+            var traces = [{ x: x1, y: y1, name: n1, line: { color: f1 }, mode: 'lines+markers' },
+            { x: x2, y: y2, name: n2, line: { color: f2 }, mode: 'lines+markers' },
+            { x: x3, y: y3, name: n3, line: { color: f3 }, mode: 'lines+markers' },
+            { x: x4, y: y4, name: n4, line: { color: f4 }, mode: 'lines+markers' },
+            { x: x5, y: y5, name: n5, line: { color: f5 }, mode: 'lines+markers' },
+            { x: x6, y: y6, name: n6, line: { color: f6 }, mode: 'lines+markers' },
+            { x: x7, y: y7, name: n7, line: { color: f7 }, mode: 'lines+markers' },
+            { x: x8, y: y8, name: n8, line: { color: f8 }, mode: 'lines+markers' },
+            { x: x9, y: y9, name: n9, line: { color: f9 }, mode: 'lines+markers' },
+            { x: x10, y: y10, name: n10, line: { color: f10 }, mode: 'lines+markers' },
+            { x: x11, y: y11, name: n11, line: { color: f11 }, mode: 'lines+markers' },
+            { x: x12, y: y12, name: n12, line: { color: f12 }, mode: 'lines+markers' }];
+            Plotly.newPlot('emissions_by_sector', traces,
+                {
+                    title: 'Emissions de gaz polluants par secteur ( ' + country + ' )',
+
+                    hoverlabel: {
+                        font: {
+                            size: 11,
+                        }
+                    },
+                    xaxis: {
+                        title: 'Année',
+                        type: 'date',
+                        tickformat: "%Y",
+                        hoverformat: "%y ",
+                        zeroline: false,
+                        showline: false,
+                    },
+                    yaxis: {
+                        title: 'Emissions ( en MtCO₂e )',
+                        zeroline: false,
+                        showline: false,
+                    }
+                });
+
+        }
+
+
+    </script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+
+
+    <script>
+        $('#myCarousel').carousel();
+    </script>
+</body>
