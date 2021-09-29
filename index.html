@@ -448,15 +448,11 @@
             });
         }
 
-        /*An array containing all the country names in the world:*/
-        //var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
         var countries = ['Afghanistan'];
         Plotly.d3.csv("https://raw.githubusercontent.com/elkassimyhajar/Open-Data-Chalenge/main/Datasets/countries.csv", function (data) {
-            //console.log(data[0].Afghanistan); 
             for (var i = 0; i < data.length; i++) {
                 countries.push(data[i].Afghanistan);
             }
-            console.log(countries);
         });
 
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
@@ -471,6 +467,7 @@
 
         var country;
         var country2;
+
         function makeplotInit() {
             country = 'France';
             country2 = 'France';
@@ -482,11 +479,12 @@
             country = document.getElementById('myInput').value;
             makeplot(country);
         }
+
         function getInputAndPlot2() {
             country2 = document.getElementById('myInput2').value;
             makeplot2(country2);
-            console.log(country2);
         }
+
         function makeplot(countryName) {
             //get input value
             Plotly.d3.csv("https://raw.githubusercontent.com/elkassimyhajar/Open-Data-Chalenge/main/Datasets/output_deaths.csv", function (data) {
@@ -496,6 +494,7 @@
                 processData(data, countryName)
             });
         };
+
         function makeplot2(countryName) {
             //get input value
             Plotly.d3.csv("https://raw.githubusercontent.com/amineouba/challenge_opendata/main/emissions_by_sector.csv", function (data) {
@@ -508,7 +507,6 @@
 
         function processData(allRows, countryName) {
 
-            console.log(allRows);
             var x1 = [], y1 = [], n1, f1, standard_deviation = [];
             var x2 = [], y2 = [], n2, f2;
             var x3 = [], y3 = [], n3, f3;
@@ -542,14 +540,6 @@
                 n5 = 'Plus de 70 ans';
                 f5 = 'rgb(8, 24, 168)';
             }
-            //console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
-
-
-            //var traces = [{x:x1, y:y1, name: n1, fill: 'tonexty', fillcolor: f1, line: {color: f1}}, 
-            //              {x:x2, y:y2, name: n2, fill: 'tonexty', fillcolor: f2, line: {color: f2}},
-            //              {x:x3, y:y3, name: n3, fill: 'tonexty', fillcolor: f3, line: {color: f3}},
-            //              {x:x4, y:y4, name: n4, fill: 'tonexty', fillcolor: f4, line: {color: f4}},
-            //              {x:x5, y:y5, name: n5, fill: 'tonexty', fillcolor: f5, line: {color: f5}}];
 
             var traces = [{ x: x1, y: y1, name: n1, line: { color: f1 } },
             { x: x2, y: y2, name: n2, line: { color: f2 } },
@@ -574,13 +564,13 @@
                     }
                 });
         };
+
         function processData2(allRows) {
 
             var x1 = [], y1 = [], n1, f1, standard_deviation = [];
             var x2 = [], y2 = [], n2, f2;
             var x3 = [], y3 = [], n3, f3;
             var x4 = [], y4 = [], n4, f4;
-            var x5 = [], y5 = [], n5, f5;
             var x6 = [], y6 = [], n6, f6;
             var x7 = [], y7 = [], n7, f7;
             var x8 = [], y8 = [], n8, f8;
@@ -610,11 +600,6 @@
                 y4.push(row['Waste']);
                 n4 = 'Dechets';
                 f4 = '#C79705';
-
-                //x5.push( row['Year'] );
-                //y5.push( row['Land-Use Change and Forestry'] );
-                //n5 = 'Changement d\'affectation des terres et foresterie';
-                //f5 = '#92CCFF';
 
                 x6.push(row['Year']);
                 y6.push(row['Bunker Fuels']);
@@ -656,7 +641,6 @@
             { x: x2, y: y2, name: n2, line: { color: f2 }, mode: 'lines+markers' },
             { x: x3, y: y3, name: n3, line: { color: f3 }, mode: 'lines+markers' },
             { x: x4, y: y4, name: n4, line: { color: f4 }, mode: 'lines+markers' },
-            { x: x5, y: y5, name: n5, line: { color: f5 }, mode: 'lines+markers' },
             { x: x6, y: y6, name: n6, line: { color: f6 }, mode: 'lines+markers' },
             { x: x7, y: y7, name: n7, line: { color: f7 }, mode: 'lines+markers' },
             { x: x8, y: y8, name: n8, line: { color: f8 }, mode: 'lines+markers' },
