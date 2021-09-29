@@ -20,7 +20,7 @@
     <title>POLLU-AWARE</title>
 </head>
 
-<body style="background-color:rgb(192,192,192); overflow-x:hidden" onload="makeplotInit();makeplotInit2()">
+<body style="background-color:rgb(192,192,192); overflow-x:hidden" onload="makeplotInit();">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
         style="border-radius: 0px; margin-bottom:0px;margin-top:0px">
         <i class="fa fa-leaf" style="color:white;font-size:30px;padding-left:30px;"></i> <a class="navbar-brand"
@@ -319,7 +319,7 @@
                                             placeholder="Pays" style="height:30px;margin-left:50px">
                                     </div>
                                     <div class="col-md-1">
-                                        <button type="button" class="btn btn-dark" onclick="getInputAndPlot();"
+                                        <button type="button" class="btn btn-dark" onclick="getInputAndPlot2();"
                                             style="height:30px;margin-left:60px"
                                             onmouseout="this.style.backgroundColor=''"
                                             onmouseover="this.style.backgroundColor='steelblue'">Rechercher</button>
@@ -470,19 +470,22 @@
 
 
         var country;
+        var country2;
         function makeplotInit() {
             country = 'France';
-            makeplot(country);
-        }
-        function makeplotInit2() {
-            country = 'France';
-            makeplot2(country);
-        }
-        function getInputAndPlot() {
-            country = document.getElementById('#myInput').value;
-            country2 = document.getElementById('#myInput2').value;
+            country2 = 'France';
             makeplot(country);
             makeplot2(country2);
+        }
+
+        function getInputAndPlot() {
+            country = document.getElementById('myInput').value;
+            makeplot(country);
+        }
+        function getInputAndPlot2() {
+            country2 = document.getElementById('myInput2').value;
+            makeplot2(country2);
+            console.log(country2);
         }
         function makeplot(countryName) {
             //get input value
@@ -497,7 +500,7 @@
             //get input value
             Plotly.d3.csv("https://raw.githubusercontent.com/amineouba/challenge_opendata/main/emissions_by_sector.csv", function (data) {
                 data = data.filter(function (row) {
-                    return row['Country'] == country;
+                    return row['Country'] == country2;
                 });
                 processData2(data, countryName)
             });
@@ -573,7 +576,6 @@
         };
         function processData2(allRows) {
 
-            console.log(allRows);
             var x1 = [], y1 = [], n1, f1, standard_deviation = [];
             var x2 = [], y2 = [], n2, f2;
             var x3 = [], y3 = [], n3, f3;
@@ -664,7 +666,7 @@
             { x: x12, y: y12, name: n12, line: { color: f12 }, mode: 'lines+markers' }];
             Plotly.newPlot('emissions_by_sector', traces,
                 {
-                    title: 'Emissions de gaz polluants par secteur ( ' + country + ' )',
+                    title: 'Emissions de gaz polluants par secteur ( ' + country2 + ' )',
 
                     hoverlabel: {
                         font: {
