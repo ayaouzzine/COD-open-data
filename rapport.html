@@ -16,110 +16,13 @@
 	<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<link rel="stylesheet" href="styles.css">
+
 	<title>RAPPORT POLLU-AWARE</title>
 </head>
 
 <body style="background-color:rgb(204, 204, 204);">
-	<style>
-		body {
-			height: 100%;
-			font-family: Montserrat;
-			font-size: 12.5px;
 
-		}
-
-		/*Menu*/
-		nav {
-			display: flex;
-			align-items: center;
-			font-size: 0.85rem;
-		}
-
-		.navbar {
-			opacity: 0.75;
-			border-bottom: 1.2px solid steelblue;
-		}
-
-		.navbar-toggler {
-			cursor: pointer;
-			top: 3rem;
-			right: 3rem;
-			color: white;
-			font-size: 3rem;
-			display: none;
-		}
-
-		nav ul li a {
-			letter-spacing: 3.5px;
-			position: relative;
-			margin: 0 3.5rem;
-			padding: 1rem 0;
-		}
-
-		nav ul li a:hover::before,
-		nav ul li a:hover::after {
-			transform: scaleX(1);
-		}
-
-		nav ul li a::before {
-			background-color: steelblue;
-			content: '';
-			position: absolute;
-			width: 90%;
-			height: 2px;
-			left: 0;
-			top: 0;
-			transform: scaleX(0);
-			transform-origin: left;
-		}
-
-		nav ul li a::after {
-			background-color: steelblue;
-			content: '';
-			position: absolute;
-			width: 90%;
-			height: 2px;
-			left: 0;
-			bottom: 0;
-			transform: scaleX(0);
-			transform-origin: right;
-		}
-
-		@media screen and (max-width: 700px) {
-
-			nav ul li a {
-				margin: 0;
-				font-size: 2rem;
-			}
-		}
-
-		@media (min-width: 768px) and (max-width: 991px) {
-			.nav-item-empty {
-				display: none;
-			}
-		}
-
-		/*TEXT*/
-		.mylead {
-			background-color: rgb(176, 224, 230);
-		}
-
-		.titreB {
-			background-color: #fff;
-		}
-
-		.textbg {
-			background-color: rgba(41, 128, 185, 0.6);
-		}
-
-		.textbg1 {
-			background-color: rgba(41, 128, 185, 0.7);
-		}
-
-		* {
-			box-sizing: inherit
-		}
-	</style>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="border-radius: 0px; margin-bottom:0px;margin-top:0px">
 		<i class="fa fa-leaf" style="color:white;font-size:30px;padding-left:30px;"></i> <a class="navbar-brand"
@@ -237,9 +140,10 @@
 						l'air. Plus ces dernières sont petites, plus elles peuvent être toxiques parce qu'elles
 						pénètrent profondément dans le système respiratoire et peuvent même atteindre le
 						système cardiovasculaire. Leur nomination commune est PM, l'abréviation du terme anglais
-						Particulate Matter dont on va aborder par la suite les deux types : PM10 (diamètre
-						inférieur à 10 micromètres) et
-						PM2,5 (diamètre inférieur à 2,5 micromètres). On note que le cheveu humain a un diamètre qui
+						Particulate Matter dont on va aborder par la suite les trois types : PM10 (diamètre
+						inférieur à 10 micromètres),
+						PM2,5 (diamètre inférieur à 2,5 micromètres) et PM1. On note que le cheveu humain a un diamètre
+						qui
 						varie entre 50 et 150 micromètres.
 						<br><br><strong>Luttons
 							contre
@@ -264,8 +168,8 @@
 						choisis sont les
 						suivants :<br><br><strong>&nbsp;<span>&#8226;</span>&nbsp;Mesures de concentration des
 							sept principaux polluants dans différentes locations
-							dans le monde</strong> : PM2.5, PM10, l’ozone O3, le dioxyde de soufre SO2, le dioxyde
-						d’azote NO2, le monoxyde de carbon CO et le carbone noir BC.<br> Les données ont été extraites
+							dans le monde</strong> : PM1, PM2.5, PM10, l’ozone O3, le dioxyde de soufre SO2, le dioxyde
+						d’azote NO2 et le monoxyde de carbon CO.<br> Les données ont été extraites
 						de l'<a href="https://docs.openaq.org/ " target="_blank">API d’Openaq</a> qui fournit des donnés
 						en
 						temps réel et des historiques également. Ces données sont issues de leurs emplacements de
@@ -275,7 +179,141 @@
 						sens des licences ouvertes puisque leur mission est de lutter contre les inégalités de l'air.
 						Pour celà, ils exposent les données sur
 						la qualité de l'air afin de connecter une communauté mondiale diversifiée d'individus et
-						d'organisations. </p>
+						d'organisations.
+
+						<br><br><strong>&nbsp;<span>&#8226;</span>&nbsp;Variation du taux de pollution par secteur dans
+							différents pays</strong> : Les secteurs retenus sont les plus pertinents et ceux qu'on
+						associe
+						généralement à la pollution de l'air dans des débats fréquents à propos du sujet, à savoir
+						énergie,
+						processus industriels, déchêts, transport et quelques autres de plus.<br> Les données ont été
+						extraites
+						de <a href="https://www.climatewatchdata.org/ghg-emissions " target="_blank">CLIMATEWATCH</a>
+						qui
+						est conçue de base pour donner aux chercheurs et intéressés du domaine les données climatiques
+						et
+						les ressources dont ils
+						ont besoin pour suivre la pollution de l'air et le
+						changement climatique. <br>On tient à mentionner que CLIMATEWATCH fournit des données libres de
+						contraintes et restrictions d'utilisation.<br>La libraire pandas a été utilisée dans ce jeu de
+						données afin de manipuler
+						le fichier csv contenant les données des émissions de gaz polluants par secteur et modifier
+						sa structure afin de pouvoir obtenir le graphe désiré. En effet, le fichier de départ avait une
+						colonne dédiée à chaque année et une colonne nommée 'Sector' qui
+						contient les secteurs, avec pandas nous avons construit une colonne 'Year' qui contient l'année
+						et
+						des colonnes dédiées à chaque secteur. Ainsi maintenant sur chaque ligne, nous avons l'année, le
+						pays et les émissions de gaz correspondantes pour chaque secteur.
+
+						<br><br><strong>&nbsp;<span>&#8226;</span>&nbsp; Part de production des énergies renouvelables
+							de chaque pays </strong> : Les énergies renouvelables représentent un pillier
+						intéressant assez souvent colléré à la pollution de l'air et au changement climatique.<br>
+						Le jeu de données est téléchargé à partir
+						de <a href="https://ourworldindata.org/grapher/co2-per-capita-vs-renewable-electricity "
+							target="_blank">Our World in Data</a>
+						qui s'intéresse à la recherche et aux données pour progresser contre les plus grands problèmes
+						du
+						monde et offre des données libres d'accès.
+
+						<br>A première vue, on constate que la majorité des pays représentés ont toujours un long trajet
+						à
+						parcourir
+						pour arriver à un stade de production d’électricité qui dépend en sa totalité sur les énergies
+						renouvelables. Non seulement ça, mais la conclusion la plus importante qu’on peut tirer de cette
+						visualisation c’est que les pays les plus développées ont un retard par rapport aux pays du
+						tiers monde pour adopter cette démarche, cela est dû principalement à la contribution de
+						l’énergie nucléaire dans cette dernière, mais ça n’a pas empêché des pays comme le brésil et
+						Canada (plus des deux tiers de leurs énergies sont issues des sources renouvelables) malgré le
+						fait qu’il ont des centrales nucléaires qui contribuent majoritairement à la production de
+						l’électricité dans ses pays-là.
+
+						<br><br><strong>&nbsp;<span>&#8226;</span>&nbsp; Effet de la pollution de l'air sur le taux de
+							mortalité </strong> : Le jeu de données considéré vise à visualiser l'impact de la
+						pollution de l'air sur le taux de mortalité dans chaque pays du monde. <br>
+						Les données ont été extraites de
+						de <a
+							href="https://ourworldindata.org/grapher/air-pollution-deaths-by-age?tab=table&time=earliest..2017&country=~OWID_WRL "
+							target="_blank">Our World in Data</a>
+						qui propose des jeux de données libres d'accès comme mentionné précédemment.
+
+						<br>Le dataset utilisé permet de récupérer le nombre de décés par tranche d'âge; un script
+						python a été mis en place afin de nettoyer les données et séléctionner les parties requises.
+						Pour faciliter le choix des pays, une barre de recherche avec autocomplétion a été établie.
+						L'interaction proposée à l'utilisateur ne l'implique pas uniquement par le choix du pays mais
+						également par la séléction ou désélection d'une ou plusieurs tranches d'âges.
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div
+		style="padding-top: 80px; padding-bottom:10px;color: rgb(51, 51, 51);font-size: 16px;line-height: 135%;background-color: lightblue;">
+		<div style="clear:both;margin-left: auto;margin-right: auto;">
+			<div class="container">
+				<div
+					style="opacity: 1;transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);transform-style: preserve-3d;margin-right: 7%;margin-bottom: 40px;margin-left: 7%;padding-bottom: 40px;">
+					<a
+						style="display: block;transition-property: opacity;transition-duration: 200ms;transition-timing-function: ease;color: rgb(51, 51, 51);text-decoration: none;font-weight: 700;">
+						<h1 style="font-size: 40px;line-height: 37px;font-weight: 1000;padding-bottom: 20px;">Idée de
+							l'architecture et des technologies</h1>
+					</a>
+					<p style="font-size: 1.25em; text-align:justify;line-height: 30px;">Le langage
+						<strong>Python</strong> fournit de
+						nombreux outils permettant le traitement et l'analyse des données. Ainsi, le choix de ce langage
+						afin de manipuler les datasets récupérés était assez intuitif. Une multitude de librairies
+						écrites pour le langage Python offrent également une grande flexibilté et facilitent l'accès à
+						des quantités énormes de données. En effet, <strong>Pandas</strong> est une bibliothèque qui
+						propose en
+						particulier des structures de données et des opérations de manipulation de tableaux numériques
+						et de séries temporelles très avantageuses.<br>
+						Une application web dédiée à la visualisation des données requiert l'instauration d'effects
+						graphiques et dynamiques conviviaux. Par conséquent, le langage <strong>Javascript</strong> doté
+						de diverses
+						librairies particulièrement utiles était indispensable. Nous avons utilisé la bibliothèque
+						<strong>D3.js</strong>
+						et <strong>Plotly js</strong> tout au long de la réalisation de notre projet POLLU-AWARE.
+						<br><br>Cette figure récapitule l'ensemble des étapes et outils utilisés :
+					</p>
+					<div style="text-align: center;"><img src="https://zupimages.net/up/21/39/fcv7.jpeg" alt=""
+							style="width:300px;" /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div
+		style="padding-top: 80px;padding-bottom: 80px;border-bottom: 1px solid rgb(221, 221, 221);background-color: rgb(240, 240, 240);text-align: center;color: rgb(51, 51, 51);font-size: 1.25em;line-height: 135%">
+		<div style="clear:both;margin-left: auto;margin-right: auto;">
+			<div class="container">
+				<div
+					style="opacity: 1;transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);transform-style: preserve-3d;margin-right: 7%;margin-bottom: 40px;margin-left: 7%;padding-bottom: 40px;">
+					<a
+						style="display: block;transition-property: opacity;transition-duration: 200ms;transition-timing-function: ease;color: rgb(51, 51, 51);text-decoration: none;font-weight: 700;">
+						<h1 style="font-size: 40px;line-height: 37px;font-weight: 1000;padding-bottom: 20px;">Conclusion
+						</h1>
+					</a>
+					<p style="font-size: 1.25em; text-align:justify;line-height: 30px;">Il apparaît opportun de
+						conclure ce rapport par des remerciements à nos professeurs <strong>Sylvain Bouveret
+						</strong>et<strong> Renaud Blanch</strong>
+						qui nous ont donné l’opportunité de réaliser ce
+						projet. Nous étions amenés à manipuler des datasets et à utiliser les technologies web et
+						les techniques de visualisation pour créer des représentations graphiques et
+						interactives.<br><br>Certes, ce projet nous a permis de traiter un sujet important qui relève du
+						développement durable, mais il fallait également en assurer l'accessibilité. C'est la raison
+						pour
+						laquelle nous avons
+						prévu d'utiliser des palettes de couleur <strong>Colorblind Friendly</strong>.
+						<br><br>Nous sommes ravis d'avoir réussi à obtenir le score suivant comme résultat de l'analyse
+						de notre page web à l'aide du
+						calculateur d'impact GreenIT Analysis qui sensibilise à prendre conscience de l’impact
+						environnemental des
+						services numériques.
+					</p>
+					<div style="text-align: center;"><img src="https://zupimages.net/up/21/39/sj7q.png" alt=""
+							style="width:900px;" />
+
+					</div>
 				</div>
 			</div>
 		</div>
